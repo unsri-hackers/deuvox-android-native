@@ -9,6 +9,7 @@ class ViewModelFactory @Inject constructor(
     private val providers: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         var provider = providers[modelClass]
         if (provider == null) {
