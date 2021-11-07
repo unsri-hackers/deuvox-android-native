@@ -1,0 +1,21 @@
+ext.flavors = {
+
+    flavorDimensions FLAVORS_DIMENSION
+
+    productFlavors {
+        development {
+            dimension FLAVORS_DIMENSION
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "Deuvox Dev"
+
+            buildConfigField 'String', 'BASE_URL', BASE_URL_DEV
+        }
+
+        production {
+            dimension FLAVORS_DIMENSION
+            resValue "string", "app_name", "Deuvox"
+
+            buildConfigField 'String', 'BASE_URL', BASE_URL
+        }
+    }
+}
