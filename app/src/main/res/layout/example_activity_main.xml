@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".feature.main.ExampleMainActivity">
 
-    <com.example.mvvm_therightway.feature.main.ExampleMainView
+    <com.example.deuvox.feature.main.ExampleMainView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
