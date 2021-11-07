@@ -9,6 +9,7 @@ dependencies {
 
     def commonDependencies = rootProject.ext.commonDependencies
     def dataDependencies = rootProject.ext.dataDependencies
+    def unitTestDependencies = rootProject.ext.unitTestDependencies
 
     implementation commonDependencies.dagger
     kapt commonDependencies.daggerCompiler
@@ -32,6 +33,7 @@ dependencies {
     testImplementation commonDependencies.pagingKtx
     implementation commonDependencies.pagingRx
 
+    testImplementation unitTestDependencies.junit
     testImplementation dataDependencies.mockito
     testImplementation dataDependencies.mockitoInline
     testImplementation dataDependencies.byteBuddyAgent

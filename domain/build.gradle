@@ -6,6 +6,7 @@ apply from: "../common.gradle"
 
 dependencies {
     def commonDependencies = rootProject.ext.commonDependencies
+    def unitTestDependencies = rootProject.ext.unitTestDependencies
 
     implementation commonDependencies.dagger
     kapt commonDependencies.daggerCompiler
@@ -16,4 +17,6 @@ dependencies {
     implementation commonDependencies.paging
     testImplementation commonDependencies.pagingKtx
     implementation commonDependencies.pagingRx
+
+    testImplementation unitTestDependencies.junit
 }
