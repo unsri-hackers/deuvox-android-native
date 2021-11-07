@@ -1,56 +1,59 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 
+apply from: "../flavors.gradle"
+apply from: "../common.gradle"
+
 android {
-    compileSdk 31
-
     defaultConfig {
-        applicationId "com.example.mvvm_therightway"
-        minSdk 21
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId "com.deuvox.deuvoxapp"
     }
 
     buildFeatures {
         viewBinding true
     }
 
+    signingConfigs {
+        release {
+            // You need to specify either an absolute path or include the
+            // keystore file in the same directory as the build.gradle file.
+            storeFile = file("release-keystore.jks")
+            storePassword System.getenv("SIGNING_STORE_PASSWORD")
+            keyAlias System.getenv("SIGNING_KEY_ALIAS")
+            keyPassword System.getenv("SIGNING_KEY_PASSWORD")
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-        freeCompilerArgs = ['-Xjvm-default=all-compatibility']
-    }
+
+    with flavors
 }
 
 dependencies {
     implementation project(path: ':data')
     implementation project(path: ':domain')
+
     def commonDependencies = rootProject.ext.commonDependencies
     def presentationDependencies = rootProject.ext.presentationDependencies
+    def unitTestDependencies = rootProject.ext.unitTestDependencies
+    def instrumentalTestDependencies = rootProject.ext.instrumentalTestDependencies
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
-    testImplementation 'junit:junit:'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    implementation "androidx.fragment:fragment-ktx:1.3.6"
+    implementation presentationDependencies.coreKtx
+    implementation presentationDependencies.appCompat
+    implementation presentationDependencies.material
+    implementation presentationDependencies.constraintLayout
+    implementation presentationDependencies.fragmentKtx
+    testImplementation unitTestDependencies.junit
+    androidTestImplementation instrumentalTestDependencies.junit
+    androidTestImplementation instrumentalTestDependencies.espresso
 
     implementation commonDependencies.dagger
     kapt commonDependencies.daggerCompiler
