@@ -13,10 +13,9 @@ ext.flavors = {
 
         preproduction {
             dimension FLAVORS_DIMENSION
-            applicationIdSuffix ".staging"
-            resValue "string", "app_name", APP_NAME_STAGING
-
-            buildConfigField 'String', 'BASE_URL', BASE_URL_STAGING
+            applicationIdSuffix ".preprod"
+            resValue "string", "app_name", APP_NAME_PREPROD
+            buildConfigField 'String', 'BASE_URL', BASE_URL_PREPROD
         }
 
         production {
