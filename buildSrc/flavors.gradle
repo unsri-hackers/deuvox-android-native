@@ -1,0 +1,28 @@
+ext.flavors = {
+
+    flavorDimensions FLAVORS_DIMENSION
+
+    productFlavors {
+        development {
+            dimension FLAVORS_DIMENSION
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", APP_NAME_DEV
+
+            buildConfigField 'String', 'BASE_URL', BASE_URL_DEV
+        }
+
+        preproduction {
+            dimension FLAVORS_DIMENSION
+            applicationIdSuffix ".preprod"
+            resValue "string", "app_name", APP_NAME_PREPROD
+            buildConfigField 'String', 'BASE_URL', BASE_URL_PREPROD
+        }
+
+        production {
+            dimension FLAVORS_DIMENSION
+            resValue "string", "app_name", APP_NAME
+
+            buildConfigField 'String', 'BASE_URL', BASE_URL
+        }
+    }
+}

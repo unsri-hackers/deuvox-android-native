@@ -6,7 +6,8 @@ dependencyResolutionManagement {
         maven { url "https://jitpack.io" }
     }
 }
-rootProject.name = "MVVM-TheRightWay"
+
+rootProject.name = "Deuvox"
 include ':app'
 include ':domain'
 include ':data'
