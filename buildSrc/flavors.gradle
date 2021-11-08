@@ -6,14 +6,22 @@ ext.flavors = {
         development {
             dimension FLAVORS_DIMENSION
             applicationIdSuffix ".dev"
-            resValue "string", "app_name", "Deuvox Dev"
+            resValue "string", "app_name", APP_NAME_DEV
 
             buildConfigField 'String', 'BASE_URL', BASE_URL_DEV
         }
 
+        preproduction {
+            dimension FLAVORS_DIMENSION
+            applicationIdSuffix ".staging"
+            resValue "string", "app_name", APP_NAME_STAGING
+
+            buildConfigField 'String', 'BASE_URL', BASE_URL_STAGING
+        }
+
         production {
             dimension FLAVORS_DIMENSION
-            resValue "string", "app_name", "Deuvox"
+            resValue "string", "app_name", APP_NAME
 
             buildConfigField 'String', 'BASE_URL', BASE_URL
         }
