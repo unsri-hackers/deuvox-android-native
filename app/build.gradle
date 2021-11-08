@@ -2,8 +2,8 @@ plugins {
     id 'com.android.application'
 }
 
-apply from: "../flavors.gradle"
-apply from: "../common.gradle"
+apply from: "../buildSrc/flavors.gradle"
+apply from: "../buildSrc/base.gradle"
 
 android {
     defaultConfig {
