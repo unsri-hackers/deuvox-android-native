@@ -33,4 +33,6 @@ abstract class BaseFragment<Binding> : Fragment() {
     open fun injectComponent() {
         /* Override to Inject Dagger Fragment Component */
     }
+
+    // On  Destroy view binding
 }

@@ -3,7 +3,7 @@ package com.example.deuvox.feature.main
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.GetDataUseCase
+import com.deuvox.domain.GetDataUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
