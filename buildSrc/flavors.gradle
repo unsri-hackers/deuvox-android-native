@@ -9,7 +9,7 @@ ext.flavors = {
     productFlavors {
         development {
             dimension FLAVORS_DIMENSION
-            applicationIdSuffix ".dev"
+            ext.appSuffix = ".dev"
             resValue "string", "app_name", APP_NAME_DEV
 
             buildConfigField 'String', 'BASE_URL', "\"${baseEnvProperties['devApiUrl']}\""
@@ -17,17 +17,28 @@ ext.flavors = {
 
         preproduction {
             dimension FLAVORS_DIMENSION
-            applicationIdSuffix ".preprod"
+            ext.appSuffix = ".preprod"
             resValue "string", "app_name", APP_NAME_PREPROD
             buildConfigField 'String', 'BASE_URL', "\"${baseEnvProperties['preProdApiUrl']}\""
         }
 
         production {
             dimension FLAVORS_DIMENSION
-            applicationIdSuffix ".prod"
+            ext.appSuffix = ".prod"
             resValue "string", "app_name", APP_NAME
 
             buildConfigField 'String', 'BASE_URL', "\"${baseEnvProperties['productionApiUrl']}\""
         }
     }
+
+    productFlavors.all { flavor ->
+        if (flavor.hasProperty('appSuffix') && isApplicationProject()) {
+            flavor.applicationIdSuffix = flavor.appSuffix
+        }
+    }
+
+}
+
+def isApplicationProject() {
+    return project.name == "app"
 }

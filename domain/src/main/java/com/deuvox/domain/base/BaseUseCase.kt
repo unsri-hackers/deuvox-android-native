@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.functions.Action
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-abstract class BaseUseCase<Type, Param>(
+abstract class BaseUseCase<Type : Any, Param>(
     private val jobScheduler: Scheduler = Schedulers.io(),
     private val postScheduler: Scheduler = AndroidSchedulers.mainThread()
 ) {
