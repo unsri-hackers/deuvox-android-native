@@ -3,6 +3,8 @@ package com.deuvox.deuvoxapp.feature.main
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import com.deuvox.deuvoxapp.base.extension.setOnDebounceSearchListener
+import com.deuvox.deuvoxapp.base.extension.setThrottleClickListener
 import com.deuvox.deuvoxapp.base.view.BaseRichView
 import com.deuvox.deuvoxapp.databinding.ViewExampleBinding
 
