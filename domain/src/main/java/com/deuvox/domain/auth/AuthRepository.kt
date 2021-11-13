@@ -2,10 +2,11 @@ package com.deuvox.domain.auth
 
 import com.deuvox.domain.auth.model.Auth
 import com.deuvox.domain.auth.register.RegisterParam
+import com.deuvox.domain.base.Resource
 import io.reactivex.rxjava3.core.Observable
 
 interface AuthRepository {
 
-    fun register(params: RegisterParam): Observable<Auth>
+    fun register(param: RegisterParam): Observable<Resource<Auth>>
 
 }
