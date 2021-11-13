@@ -50,4 +50,6 @@ dependencies {
     testImplementation dataDependencies.mockitoInline
     testImplementation dataDependencies.byteBuddyAgent
     testImplementation dataDependencies.byteBuddy
+
+    implementation commonDependencies.timber
 }

@@ -76,4 +76,6 @@ dependencies {
     implementation presentationDependencies.toasty
     implementation presentationDependencies.swipeRefresh
     implementation presentationDependencies.rxBinding
+
+    implementation commonDependencies.timber
 }
