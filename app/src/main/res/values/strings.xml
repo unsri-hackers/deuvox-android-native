@@ -7,4 +7,5 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="register">Register</string>
+    <string name="redirect_login">Already have an account? Login Now</string>
 </resources>

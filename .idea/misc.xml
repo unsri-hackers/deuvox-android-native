@@ -3,22 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ACER/Documents/GithubRepositories/deuvox-android-native/app/src/main/res/drawable/curved_header.xml" value="0.20277777777777778" />
-        <entry key="..\:/Users/ACER/Documents/GithubRepositories/deuvox-android-native/app/src/main/res/drawable/ellipse_header.xml" value="0.165234375" />
-        <entry key="..\:/Users/ACER/Documents/GithubRepositories/deuvox-android-native/app/src/main/res/drawable/register_border.xml" value="0.165234375" />
-        <entry key="..\:/Users/ACER/Documents/GithubRepositories/deuvox-android-native/app/src/main/res/drawable/rounded_button.xml" value="0.165234375" />
-        <entry key="..\:/Users/ACER/Documents/GithubRepositories/deuvox-android-native/app/src/main/res/layout/activity_register.xml" value="0.2" />
-        <entry key="..\:/Users/ACER/Documents/GithubRepositories/deuvox-android-native/app/src/main/res/layout/example_activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/ACER/Documents/GithubRepositories/deuvox-android-native/app/src/main/res/layout/testlayout.xml" value="0.153125" />
-        <entry key="..\:/Users/ACER/Documents/GithubRepositories/deuvox-android-native/app/src/main/res/layout/view_example.xml" value="0.1" />
+        <entry key="..\:/Users/ACER/Documents/GithubRepositories/deuvox-android-native/app/src/main/res/drawable/curved_header.xml" value="0.165234375" />
+        <entry key="..\:/Users/ACER/Documents/GithubRepositories/deuvox-android-native/app/src/main/res/layout/activity_register.xml" value="0.25" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
-  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="16" project-jdk-type="JavaSDK" />
 </project>
