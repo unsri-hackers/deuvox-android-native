@@ -13,11 +13,11 @@ abstract class BaseUseCase<Type : Any, Param>(
 ) {
     private val disposable = CompositeDisposable()
 
-    abstract fun buildUseCase(params: Param): Observable<Type>
+    abstract fun buildUseCase(params: Param): Observable<Resource<Type>>
 
     fun execute(
         params: Param,
-        onSuccess: (Type) -> Unit,
+        onSuccess: (Resource<Type>) -> Unit,
         onError: (t: Throwable) -> Unit = {},
     ) {
         doOnExecute(params, onSuccess, onError, {}, {})
@@ -25,7 +25,7 @@ abstract class BaseUseCase<Type : Any, Param>(
 
     fun execute(
         params: Param,
-        onSuccess: (Type) -> Unit,
+        onSuccess: (Resource<Type>) -> Unit,
         onError: (t: Throwable) -> Unit = {},
         onComplete: () -> Unit = {}
     ) {
@@ -34,7 +34,7 @@ abstract class BaseUseCase<Type : Any, Param>(
 
     private fun doOnExecute(
         params: Param,
-        onSuccess: (Type) -> Unit,
+        onSuccess: (Resource<Type>) -> Unit,
         onError: (t: Throwable) -> Unit = {},
         onComplete: () -> Unit = {},
         onDispose: Action = Action {}
