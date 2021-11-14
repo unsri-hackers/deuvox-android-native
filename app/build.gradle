@@ -60,10 +60,6 @@ dependencies {
 
     implementation presentationDependencies.coil
 
-    implementation commonDependencies.retrofit
-    implementation commonDependencies.retrofitRxAdapter
-    implementation commonDependencies.gsonConverter
-
     implementation commonDependencies.rxKotlin
     implementation commonDependencies.rxAndroid
 
