@@ -18,13 +18,22 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         redirectLogin = findViewById(R.id.redirect_login)
-        val redirectText = redirectLogin.text.toSpannable()
-        redirectText[redirectText.length-9 until redirectText.length] = object: ClickableSpan(){
+        redirectLogin = SpannableClick(
+            redirectLogin.text.length-9,
+            redirectLogin.text.length,
+            redirectLogin
+        )
+    }
+
+    private fun SpannableClick(start: Int, end: Int, textView: TextView): TextView {
+        val redirectText = textView.text.toSpannable()
+        redirectText[start until end] = object: ClickableSpan(){
             override fun onClick(View: View) {
-                TODO("Not implemented yet")
+                TODO("redirect ke login")
             }
         }
-        redirectLogin.movementMethod = LinkMovementMethod()
-        redirectLogin.text = redirectText
+        textView.movementMethod = LinkMovementMethod()
+        textView.text = redirectText
+        return textView
     }
 }
