@@ -8,15 +8,16 @@ import javax.inject.Singleton
 
 @Singleton
 class DataNetworkRepository @Inject constructor(
-    private val dataNetworkInterface: DataNetworkInterface) {
-    suspend fun loginRequest() : Flow<Resource<List<String>>> {
+    private val dataNetworkInterface: DataNetworkInterface
+    ) {
+    suspend fun loginRequest(username : String, password : String) : Flow<Resource<List<String>>> {
         return flow {
-            emit(Resource.loading())
+            emit(Resource.Loading)
             try {
-                val result = dataNetworkInterface.loginRequest()
-                emit(Resource.success(result))
+                val result = dataNetworkInterface.loginRequest(username, password)
+                emit(Resource.Success(result))
             }catch (e: Exception) {
-                emit(Resource.error("Ada Kesalahan"))
+                emit(Resource.Error("Ada Kesalahan"))
             }
         }
     }
