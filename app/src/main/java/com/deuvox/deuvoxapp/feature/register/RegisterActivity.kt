@@ -1,4 +1,4 @@
-package com.example.deuvox.feature.register
+package com.deuvox.deuvoxapp.feature.register
 
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.set
 import androidx.core.text.toSpannable
-import com.example.deuvox.R
+import com.deuvox.deuvoxapp.R
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var redirectLogin : TextView
