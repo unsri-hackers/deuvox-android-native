@@ -1,14 +1,12 @@
 package com.deuvox.deuvoxapp.feature.main
 
-import androidx.lifecycle.ViewModelProvider
 import com.deuvox.deuvoxapp.base.activity.BaseActivity
+import com.deuvox.deuvoxapp.base.delegate.viewModel
 import com.deuvox.deuvoxapp.databinding.ExampleActivityMainBinding
 import com.deuvox.deuvoxapp.feature.main.di.DaggerExampleMainComponent
 
 class ExampleMainActivity : BaseActivity<ExampleActivityMainBinding>() {
-    private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[ExampleMainViewModel::class.java]
-    }
+    private val viewModel by viewModel<ExampleMainViewModel>()
 
     override fun getViewBinding(): ExampleActivityMainBinding =
         ExampleActivityMainBinding.inflate(layoutInflater)
