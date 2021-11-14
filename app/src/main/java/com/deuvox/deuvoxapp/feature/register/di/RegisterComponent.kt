@@ -7,6 +7,6 @@ import dagger.Component
 @Component(dependencies = [AppComponent::class], modules = [RegisterModule::class])
 @PerActivity
 interface RegisterComponent {
-    // TODO: Inject Activity here!!!
+    // TODO (Farras): DRP-009 - Inject Activity
     // fun inject(registerActivity: RegisterActivity)
 }
