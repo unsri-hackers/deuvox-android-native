@@ -26,9 +26,10 @@ dependencies {
     implementation commonDependencies.dagger
     kapt commonDependencies.daggerCompiler
 
-    implementation commonDependencies.retrofit
-    implementation commonDependencies.retrofitRxAdapter
-    implementation commonDependencies.gsonConverter
+    api commonDependencies.retrofit
+    api commonDependencies.retrofitRxAdapter
+    api commonDependencies.gsonConverter
+    api dataDependencies.interceptor
 
     implementation commonDependencies.rxKotlin
     implementation commonDependencies.rxAndroid
@@ -37,9 +38,6 @@ dependencies {
     implementation dataDependencies.roomRxJava
     implementation dataDependencies.roomKtx
     kapt dataDependencies.roomCompiler
-
-    implementation dataDependencies.interceptor
-    implementation dataDependencies.okHttp3
 
     implementation commonDependencies.paging
     testImplementation commonDependencies.pagingKtx
