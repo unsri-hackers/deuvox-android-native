@@ -15,9 +15,4 @@ class SplashScreenView @JvmOverloads constructor(
     override fun getViewBinding(): SplashScreenBinding =
         SplashScreenBinding.inflate(LayoutInflater.from(context), this, true)
 
-    override fun setup() {
-        binding.run {
-
-        }
-    }
 }
