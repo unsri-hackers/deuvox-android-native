@@ -1,5 +1,6 @@
 package com.deuvox.auth.remote
 
+import com.deuvox.auth.remote.request.LoginRequest
 import com.deuvox.auth.remote.request.RegisterRequest
 import com.deuvox.auth.remote.response.AuthResponse
 import com.deuvox.base.BaseResponse
@@ -13,4 +14,6 @@ interface AuthService {
     @POST("auth/register")
     fun register(@Body body: RegisterRequest): Observable<Response<BaseResponse<AuthResponse>>>
 
+    @POST("auth/login")
+    fun login(@Body body: LoginRequest): Observable<Response<BaseResponse<AuthResponse>>>
 }
