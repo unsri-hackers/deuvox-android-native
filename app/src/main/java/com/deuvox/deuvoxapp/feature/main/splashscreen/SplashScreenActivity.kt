@@ -2,8 +2,8 @@ package com.deuvox.deuvoxapp.feature.main.splashscreen
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import com.deuvox.deuvoxapp.base.activity.BaseActivity
+import com.deuvox.deuvoxapp.base.delegate.viewModel
 import com.deuvox.deuvoxapp.databinding.SplashScreenBinding
 import com.deuvox.deuvoxapp.feature.main.ExampleMainActivity
 import com.deuvox.deuvoxapp.feature.main.di.DaggerSplashScreenComponent
@@ -12,9 +12,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashScreenActivity : BaseActivity<SplashScreenBinding>() {
-    private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[SplashScreenViewModel::class.java]
-    }
+
+    private val viewModel by viewModel<SplashScreenViewModel>()
 
     override fun getViewBinding(): SplashScreenBinding =
         SplashScreenBinding.inflate(layoutInflater)
