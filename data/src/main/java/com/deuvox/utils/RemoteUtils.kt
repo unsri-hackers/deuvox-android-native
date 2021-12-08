@@ -4,40 +4,40 @@ import com.deuvox.base.BaseResponse
 import com.deuvox.data.BuildConfig
 import com.deuvox.domain.base.Resource
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.schedulers.Schedulers
 import retrofit2.Response
 import timber.log.Timber
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-inline fun <reified T : Any> networkCall(block: () -> Observable<Response<BaseResponse<T>>>): Observable<Resource<T>> {
+inline fun <reified T : Any> networkCall(crossinline block: () -> Observable<Response<BaseResponse<T>>>): Observable<Resource<T>> {
     return try {
-        Observable.just(Resource.Loading)
+        Observable.create { emitter ->
+            emitter.onNext(Resource.Loading)
 
-        block().map { response ->
+            val response = block().blockingSingle()
             when (response.code()) {
                 in 200..226,
                 in 300..308 -> {
-                    Resource.Success(response.body()?.data)
+                    emitter.onNext(Resource.Success(response.body()?.data))
                 }
                 in 400..451 -> {
                     Timber.e(response.getError())
-                    Resource.Error.BadRequest(response.body().getError())
+                    emitter.onNext(Resource.Error.BadRequest(response.body().getError()))
                 }
                 in 500..511 -> {
                     val error = response.getError()
                     Timber.e(error)
 
                     if (BuildConfig.DEBUG) {
-                        Resource.Error.ServerError(error)
+                        emitter.onNext(Resource.Error.ServerError(error))
                     } else {
-                        Resource.Error.ServerError("Sorry, there was an error on the server")
+                        emitter.onNext(Resource.Error.ServerError("Sorry, there was an error on the server"))
                     }
                 }
                 else -> throw IllegalArgumentException("Unknown HTTP Status Code: ${response.code()}")
             }
-        }.subscribeOn(Schedulers.io())
+        }
     } catch (e: SocketTimeoutException) {
         Timber.e(e)
         Observable.just(Resource.Error.ConnectionTimeout("The connection has timed out"))
