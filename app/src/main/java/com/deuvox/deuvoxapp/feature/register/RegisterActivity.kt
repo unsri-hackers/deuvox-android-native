@@ -1,39 +1,39 @@
 package com.deuvox.deuvoxapp.feature.register
 
-import android.os.Bundle
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.view.View
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.set
-import androidx.core.text.toSpannable
 import com.deuvox.deuvoxapp.R
+import com.deuvox.deuvoxapp.base.delegate.viewModel
+import com.deuvox.deuvoxapp.base.activity.BaseActivity
+import com.deuvox.deuvoxapp.databinding.RegisterScreenBinding
+import com.deuvox.deuvoxapp.feature.main.di.DaggerRegisterComponent
+import com.deuvox.domain.auth.register.RegisterParam
 
-class RegisterActivity : AppCompatActivity() {
-    private lateinit var redirectLogin : TextView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+class RegisterActivity : BaseActivity<RegisterScreenBinding>() {
+    private val viewModel by viewModel<RegisterViewModel>()
 
-        redirectLogin = findViewById(R.id.redirect_login)
-        redirectLogin = SpannableClick(
-            redirectLogin.text.length-9,
-            redirectLogin.text.length,
-            redirectLogin
-        )
-    }
-
-    private fun SpannableClick(start: Int, end: Int, textView: TextView): TextView {
-        val redirectText = textView.text.toSpannable()
-        redirectText[start until end] = object: ClickableSpan(){
-            override fun onClick(View: View) {
-                TODO("redirect ke login")
+    override fun init() {
+        viewModel
+        binding.btnRegister.setOnClickListener { v ->
+            if (v?.id == R.id.btn_register) {
+                val param = RegisterParam(
+                    binding.registerEmail.text.toString(),
+                    binding.registerEmail.text.toString(),
+                    binding.registerPassword.text.toString(),
+                    binding.registerPassword.text.toString()
+                )
+                viewModel.register(param)
             }
         }
-        textView.movementMethod = LinkMovementMethod()
-        textView.text = redirectText
-        return textView
     }
+
+    override fun getViewBinding(): RegisterScreenBinding = RegisterScreenBinding.inflate(layoutInflater)
+
+    override fun injectComponent() {
+        DaggerRegisterComponent.builder()
+            .appComponent(applicationComponent)
+            .build()
+            .inject(this)
+    }
+
 }
