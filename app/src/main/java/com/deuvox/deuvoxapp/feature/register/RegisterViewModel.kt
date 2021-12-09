@@ -22,6 +22,11 @@ class RegisterViewModel @Inject constructor(
         })
     }
 
+    fun register(registerParam: RegisterParam) {
+        registerUseCase.execute(registerParam, {
+            Timber.e("$it")
+        })
+    }
     override fun onDispose() {
         super.onDispose()
         registerUseCase.dispose()
