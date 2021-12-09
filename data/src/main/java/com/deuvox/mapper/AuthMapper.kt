@@ -1,7 +1,9 @@
 package com.deuvox.mapper
 
+import com.deuvox.auth.remote.request.LoginRequest
 import com.deuvox.auth.remote.request.RegisterRequest
 import com.deuvox.auth.remote.response.AuthResponse
+import com.deuvox.domain.auth.login.LoginParam
 import com.deuvox.domain.auth.model.Auth
 import com.deuvox.domain.auth.model.Token
 import com.deuvox.domain.auth.register.RegisterParam
@@ -12,6 +14,13 @@ fun RegisterParam.toRequestBody(): RegisterRequest {
         fullName = this.fullName,
         password = this.password,
         confirmPassword = this.confirmPassword
+    )
+}
+
+fun LoginParam.toRequestBody(): LoginRequest {
+    return LoginRequest(
+        email = this.email,
+        password = this.password
     )
 }
 

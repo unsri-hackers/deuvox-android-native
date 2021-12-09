@@ -2,6 +2,7 @@ package com.deuvox.auth
 
 import com.deuvox.auth.remote.AuthRemoteRepository
 import com.deuvox.domain.auth.AuthRepository
+import com.deuvox.domain.auth.login.LoginParam
 import com.deuvox.domain.auth.model.Auth
 import com.deuvox.domain.auth.register.RegisterParam
 import com.deuvox.domain.base.Resource
@@ -17,6 +18,10 @@ class AuthRepositoryImpl @Inject constructor(
 
     override fun register(param: RegisterParam): Observable<Resource<Auth>> {
         return remoteRepository.register(param.toRequestBody()).mapResource { it.toDomainModel() }
+    }
+
+    override fun login(param: LoginParam): Observable<Resource<Auth>> {
+        return remoteRepository.login(param.toRequestBody()).mapResource { it.toDomainModel() }
     }
 
 }

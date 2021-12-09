@@ -1,5 +1,6 @@
 package com.deuvox.auth.remote
 
+import com.deuvox.auth.remote.request.LoginRequest
 import com.deuvox.auth.remote.request.RegisterRequest
 import com.deuvox.auth.remote.response.AuthResponse
 import com.deuvox.domain.base.Resource
@@ -13,6 +14,10 @@ class AuthRemoteRepository @Inject constructor(
 
     fun register(body: RegisterRequest): Observable<Resource<AuthResponse>> {
         return networkCall { authService.register(body) }
+    }
+
+    fun login(body: LoginRequest): Observable<Resource<AuthResponse>> {
+        return networkCall { authService.login(body) }
     }
 
 }
